@@ -27,7 +27,15 @@ public class CarView extends JFrame {
     JPanel gasPanel = new JPanel();
     JSpinner gasSpinner;
     int gasAmount = 50;
-    JLabel gasLabel = new JLabel("Amount of gas");
+    JLabel gasLabel = new JLabel("Amount of gas/brake");
+    int brakeAmount = 50;
+
+    //init of brake panel
+    //JPanel brakePanel = new JPanel();
+    //JSpinner brakeSpiner;
+    //int brakeAmount = 50;
+    //JLabel brakeLabel = new JLabel("Amount of gas");
+
 
     JButton gasButton = new JButton("Gas");
     JButton brakeButton = new JButton("Brake");
@@ -63,6 +71,14 @@ public class CarView extends JFrame {
         gasSpinner.addChangeListener(e -> {
                 gasAmount = (int) ((JSpinner)e.getSource()).getValue();
         });
+        gasSpinner.addChangeListener(e -> {
+            brakeAmount = (int) ((JSpinner)e.getSource()).getValue();
+        });
+
+        //braking panel
+        //brakePanel.setLayout(new BorderLayout());
+        //brakePanel.add(brakeLabel, BorderLayout.PAGE_START);
+        //brakePanel.add(gasSpinner, BorderLayout.PAGE_END);
 
         gasPanel.setLayout(new BorderLayout());
         gasPanel.add(gasLabel, BorderLayout.PAGE_START);
@@ -82,7 +98,6 @@ public class CarView extends JFrame {
         this.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);
 
-
         startButton.setBackground(Color.blue);
         startButton.setForeground(Color.green);
         startButton.setPreferredSize(new Dimension(X/5-15,200));
@@ -97,6 +112,18 @@ public class CarView extends JFrame {
         // TODO: Create more for each component as necessary
         gasButton.addActionListener(e -> {
             carC.gas(gasAmount);
+        });
+
+        leftButton.addActionListener(e -> {
+            carC.turnLeft();
+        });
+
+        rightButton.addActionListener(e -> {
+            carC.turnRight();
+        });
+
+        brakeButton.addActionListener(e -> {
+           carC.brake(brakeAmount);
         });
 
         // Make the panel layout more compact

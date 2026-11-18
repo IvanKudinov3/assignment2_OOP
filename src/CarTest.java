@@ -46,8 +46,8 @@ class CarTest {
         volvo240.startEngine();
         volvo240.move();
 
-        boolean result1 = volvo240.getX() == 0.0;
-        boolean result2 = volvo240.getY() == 0.1;
+        boolean result1 = volvo240.getPosition().getX() == 0.0;
+        boolean result2 = volvo240.getPosition().getY() == 0.1;
         boolean result3 = volvo240.getDirection() == Direction.NORTH;
 
         reportResult("Volvo240 is moving", result1&&result2&&result3);
@@ -59,8 +59,8 @@ class CarTest {
 
         volvo240.turnRight();
 
-        boolean result1 = volvo240.getX() == 0.0;
-        boolean result2 = volvo240.getY() == 0.0;
+        boolean result1 = volvo240.getPosition().getX() == 0.0;
+        boolean result2 = volvo240.getPosition().getY() == 0.0;
         boolean result3 = volvo240.getDirection() == Direction.EAST;
 
         reportResult("While facing north, turning right, you will be facing", result1&&result2&&result3);
@@ -72,8 +72,8 @@ class CarTest {
 
         volvo240.turnLeft();
 
-        boolean result1 = volvo240.getX() == 0.0;
-        boolean result2 = volvo240.getY() == 0.0;
+        boolean result1 = volvo240.getPosition().getX() == 0.0;
+        boolean result2 = volvo240.getPosition().getY() == 0.0;
         boolean result3 = volvo240.getDirection() == Direction.WEST;
 
         reportResult( "While facing north, turning left, you will be facing", result1&&result2&&result3);
@@ -192,5 +192,4 @@ class CarTest {
         testBrakeAboveOne();
         testSaabBrakeNeverNegative();
     }
-
 }

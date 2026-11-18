@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.geom.Point2D;
 
 public abstract class Car implements Movable {
 
@@ -7,8 +8,7 @@ public abstract class Car implements Movable {
     private double currentSpeed;
     private Color color;
     private String modelName;
-    private double x;
-    private double y;
+    private Point2D.Double position;
     private Direction direction;
 
 
@@ -19,8 +19,7 @@ public abstract class Car implements Movable {
         this.color = color;
         this.modelName = modelName;
         currentSpeed = 0;
-        x = 0;
-        y = 0;
+        this.position = new Point2D.Double(0,0);
         direction = Direction.NORTH;
     }
 
@@ -48,14 +47,6 @@ public abstract class Car implements Movable {
         color = clr;
     }
 
-    public double getX() {
-        return x;
-    }
-
-    public double getY() {
-        return y;
-    }
-
     public Direction getDirection() {
         return direction;
     }
@@ -67,6 +58,8 @@ public abstract class Car implements Movable {
     public void stopEngine() {
         currentSpeed = 0;
     }
+
+    public Point2D.Double getPosition(){ return position; }
 
     // However each car has its own speed factor
     public abstract double speedFactor();
@@ -103,13 +96,13 @@ public abstract class Car implements Movable {
     @Override
     public void move() {
         if (direction == Direction.NORTH) {
-            y += currentSpeed;
+            position.y += currentSpeed;
         }  else if (direction == Direction.EAST) {
-            x += currentSpeed;
+            position.x += currentSpeed;
         }  else if (direction == Direction.SOUTH) {
-            y -= currentSpeed;
+            position.y -= currentSpeed;
         }  else if (direction == Direction.WEST) {
-            x -= currentSpeed;
+            position.x -= currentSpeed;
         }
     }
 
