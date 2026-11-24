@@ -14,13 +14,13 @@ public abstract class Car implements Movable {
 
 
     // Constructor
-    public Car(int nrDoors, double enginePower, Color color, String modelName) {
+    public Car(int nrDoors, double enginePower, Color color, String modelName, double x, double y) {
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.color = color;
         this.modelName = modelName;
         currentSpeed = 0;
-        this.position = new Point2D.Double(0,0);
+        this.position = new Point2D.Double(x,y);
         direction = Direction.NORTH;
     }
 
@@ -94,16 +94,49 @@ public abstract class Car implements Movable {
         }
     }
 
+    public void DoUTurn(){
+        if (direction == Direction.NORTH) {
+            direction = Direction.SOUTH;
+        }   else if (direction == Direction.WEST)  {
+            direction = Direction.EAST;
+        }   else if (direction == Direction.SOUTH) {
+            direction = Direction.NORTH;
+        }   else if (direction == Direction.EAST) {
+            direction = Direction.WEST;
+        }
+    }
+
+    public void CheckForWall() {
+        if (getPosition().getX() == 700 || getPosition().getX() > 700) {
+            DoUTurn();
+            IO.println("Car do UTURn");
+        } else if (getPosition().getX() < 0) {
+            DoUTurn();
+            IO.println("Car do UTURn");
+        } else if (getPosition().getY() == 500 || getPosition().getY() > 500 ) {
+            DoUTurn();
+            IO.println("Car do UTURn");
+        } else if (getPosition().getY() < 0) {
+            DoUTurn();
+            IO.println("Car do UTURn");
+
+        }
+    }
+
     @Override
     public void move() {
         if (direction == Direction.NORTH) {
             position.y += currentSpeed;
+            IO.println("Current pos: " + position.getX() + ", " + position.getY());
         }  else if (direction == Direction.EAST) {
             position.x += currentSpeed;
+            IO.println("Current pos: " + position.getX() + ", " + position.getY());
         }  else if (direction == Direction.SOUTH) {
             position.y -= currentSpeed;
+            IO.println("Current pos: " + position.getX() + ", " + position.getY());
         }  else if (direction == Direction.WEST) {
             position.x -= currentSpeed;
+            IO.println("Current pos: " + position.getX() + ", " + position.getY());
         }
     }
 

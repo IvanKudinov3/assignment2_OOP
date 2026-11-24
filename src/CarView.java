@@ -30,13 +30,6 @@ public class CarView extends JFrame {
     JLabel gasLabel = new JLabel("Amount of gas");
     int brakeAmount = 50;
 
-    //init of brake panel
-    //JPanel brakePanel = new JPanel();
-    //JSpinner brakeSpiner;
-    //int brakeAmount = 50;
-    //JLabel brakeLabel = new JLabel("Amount of gas");
-
-
     JButton gasButton = new JButton("Gas");
     JButton brakeButton = new JButton("Brake");
     JButton leftButton = new JButton("← Turn left ←");
@@ -74,11 +67,6 @@ public class CarView extends JFrame {
         gasSpinner.addChangeListener(e -> {
             brakeAmount = (int) ((JSpinner)e.getSource()).getValue();
         });
-
-        //braking panel
-        //brakePanel.setLayout(new BorderLayout());
-        //brakePanel.add(brakeLabel, BorderLayout.PAGE_START);
-        //brakePanel.add(gasSpinner, BorderLayout.PAGE_END);
 
         gasPanel.setLayout(new BorderLayout());
         gasPanel.add(gasLabel, BorderLayout.PAGE_START);
@@ -154,4 +142,7 @@ public class CarView extends JFrame {
         // Make sure the frame exits when "x" is pressed
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+
+
+
 }

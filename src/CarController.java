@@ -33,6 +33,7 @@ public class CarController {
 
             for (Car car : cars) {
                 car.move();
+                car.CheckForWall();
                 int x = (int) Math.round(car.getPosition().getX());
                 int y = (int) Math.round(car.getPosition().getY());
                 frame.drawPanel.moveit(x, y);
@@ -83,9 +84,8 @@ public class CarController {
     void turboOn(){
         for(Car car : cars){
             if (car.getClass() == Saab95.class)
-                ((Saab95)car).setTurboOn();
-                //Downcasting to Saab after checking if the car is Saab, then turning on/off turbo
-                IO.println("Turbo on for " + car.getClass());
+                ((Saab95)car).setTurboOn(); //Downcasting to Saab after checking if the car is Saab, then turning on/off turbo
+
         }
     }
 
