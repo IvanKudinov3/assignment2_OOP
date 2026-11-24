@@ -40,7 +40,6 @@ public class CarController {
                 frame.drawPanel.revalidate();
                 frame.drawPanel.repaint();
             }
-
         }
     }
 
@@ -51,6 +50,7 @@ public class CarController {
             car.gas(gas);
         }
     }
+
     void turnRight(){
         for (Car car : cars) {
             car.turnRight();
@@ -63,8 +63,36 @@ public class CarController {
     }
 
     void brake(double amount){
+        double brake = ( amount) / 100;
         for (Car car : cars) {
-            car.brake(amount);
+            car.brake(brake);
+        }
+    }
+    void startEngine() {
+        for (Car car : cars) {
+            car.startEngine();
+        }
+    }
+
+    void stopEngine(){
+        for(Car car : cars){
+            car.stopEngine();
+        }
+    }
+
+    void turboOn(){
+        for(Car car : cars){
+            if (car.getClass() == Saab95.class)
+                ((Saab95)car).setTurboOn();
+                //Downcasting to Saab after checking if the car is Saab, then turning on/off turbo
+                IO.println("Turbo on for " + car.getClass());
+        }
+    }
+
+    void turboOff(){
+        for(Car car : cars){
+            if (car.getClass() == Saab95.class)
+                ((Saab95)car).setTurboOff();
         }
     }
 }

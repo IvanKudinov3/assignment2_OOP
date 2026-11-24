@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.geom.Point2D;
+import java.io.IOException;
 
 public abstract class Car implements Movable {
 
