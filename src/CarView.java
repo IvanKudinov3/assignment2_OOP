@@ -1,9 +1,5 @@
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * This class represents the full view of the MVC pattern of your car simulator.
@@ -20,7 +16,7 @@ public class CarView extends JFrame {
     // The controller member
     CarController carC;
 
-    DrawPanel drawPanel = new DrawPanel(X, Y-240);
+    DrawPanel drawPanel;
 
     JPanel controlPanel = new JPanel();
 
@@ -29,12 +25,6 @@ public class CarView extends JFrame {
     int gasAmount = 50;
     JLabel gasLabel = new JLabel("Amount of gas/brake");
     int brakeAmount = 50;
-
-    //init of brake panel
-    //JPanel brakePanel = new JPanel();
-    //JSpinner brakeSpiner;
-    //int brakeAmount = 50;
-    //JLabel brakeLabel = new JLabel("Amount of gas");
 
 
     JButton gasButton = new JButton("Gas");
@@ -48,9 +38,9 @@ public class CarView extends JFrame {
     JButton stopButton = new JButton("Stop all cars");
 
     // Constructor
-    public CarView(String framename, CarController cc) {
+    public CarView(String rename, CarController cc) {
         this.carC = cc;
-        initComponents(framename);
+        initComponents(rename);
     }
 
     // Sets everything in place and fits everything
@@ -60,6 +50,7 @@ public class CarView extends JFrame {
         this.setPreferredSize(new Dimension(X,Y));
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
+        drawPanel = new DrawPanel(X, Y - 240, carC.cars);
         this.add(drawPanel);
 
         SpinnerModel spinnerModel =
@@ -75,10 +66,6 @@ public class CarView extends JFrame {
             brakeAmount = (int) ((JSpinner)e.getSource()).getValue();
         });
 
-        //braking panel
-        //brakePanel.setLayout(new BorderLayout());
-        //brakePanel.add(brakeLabel, BorderLayout.PAGE_START);
-        //brakePanel.add(gasSpinner, BorderLayout.PAGE_END);
 
         gasPanel.setLayout(new BorderLayout());
         gasPanel.add(gasLabel, BorderLayout.PAGE_START);
@@ -124,6 +111,22 @@ public class CarView extends JFrame {
 
         brakeButton.addActionListener(e -> {
            carC.brake(brakeAmount);
+        });
+
+        stopButton.addActionListener(e -> {
+            carC.stopAllCars();
+        });
+
+        startButton.addActionListener(e -> {
+            carC.startAllCars();
+        });
+
+        turboOnButton.addActionListener(e -> {
+            carC.turboOn();
+        });
+
+        turboOffButton.addActionListener(e -> {
+            carC.turboOff();
         });
 
         // Make the panel layout more compact
