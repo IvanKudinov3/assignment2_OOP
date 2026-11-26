@@ -8,6 +8,8 @@ void main() {
     cc.cars.add(new Volvo240());
 
     // Start a new view and send a reference to the controller
+    IO.println(cc);
     cc.frame = new CarView("CarSim 1.0", cc);
+
     cc.startTimer();
 }

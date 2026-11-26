@@ -109,16 +109,12 @@ public abstract class Car implements Movable {
     public void CheckForWall() {
         if (getPosition().getX() == 700 || getPosition().getX() > 700) {
             DoUTurn();
-            IO.println("Car do UTURn");
         } else if (getPosition().getX() < 0) {
             DoUTurn();
-            IO.println("Car do UTURn");
         } else if (getPosition().getY() == 500 || getPosition().getY() > 500 ) {
             DoUTurn();
-            IO.println("Car do UTURn");
         } else if (getPosition().getY() < 0) {
             DoUTurn();
-            IO.println("Car do UTURn");
 
         }
     }
@@ -127,16 +123,12 @@ public abstract class Car implements Movable {
     public void move() {
         if (direction == Direction.NORTH) {
             position.y += currentSpeed;
-            IO.println("Current pos: " + position.getX() + ", " + position.getY());
         }  else if (direction == Direction.EAST) {
             position.x += currentSpeed;
-            IO.println("Current pos: " + position.getX() + ", " + position.getY());
         }  else if (direction == Direction.SOUTH) {
             position.y -= currentSpeed;
-            IO.println("Current pos: " + position.getX() + ", " + position.getY());
         }  else if (direction == Direction.WEST) {
             position.x -= currentSpeed;
-            IO.println("Current pos: " + position.getX() + ", " + position.getY());
         }
     }
 
@@ -152,7 +144,6 @@ public abstract class Car implements Movable {
             direction = Direction.NORTH;
         }
     }
-
 
     @Override
     public void turnRight() {

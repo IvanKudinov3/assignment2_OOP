@@ -29,6 +29,7 @@ public class CarController {
      * view to update its images. TODO Change this method to your needs.
      */
     private class TimerListener implements ActionListener {
+
         public void actionPerformed(ActionEvent e) {
 
             for (Car car : cars) {
@@ -36,7 +37,7 @@ public class CarController {
                 car.CheckForWall();
                 int x = (int) Math.round(car.getPosition().getX());
                 int y = (int) Math.round(car.getPosition().getY());
-                frame.drawPanel.moveit(x, y);
+
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.revalidate();
                 frame.drawPanel.repaint();
